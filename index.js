@@ -3,6 +3,7 @@ dotenv.config();
 
 import express from "express";
 import { createClient } from "@supabase/supabase-js";
+import serverless from "serverless-http";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -53,3 +54,5 @@ app.get("/register-hit", async function (req, res) {
 app.listen(port, function () {
     console.log("register hits app listening on port " + port);
 });
+
+export const handler = serverless(app);
